@@ -5,6 +5,7 @@ import java.util.HashSet;
 /**
  * This class is designed to encapsulate the fields and behaviors of a campus club.
  * @author kireh
+ * @version 0.1
  *
  */
 class Club

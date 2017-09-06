@@ -1,22 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <classpath>
 	<classpathentry kind="src" path="src"/>
-	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
-	<classpathentry kind="lib" path="lib/mongodb-driver-3.4.3.jar"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/CDL.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/Cookie.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/CookieList.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/HTTP.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/HTTPTokener.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/JSONArray.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/JSONException.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/JSONML.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/JSONObject.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/JSONPointer.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/JSONPointerException.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/JSONString.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/JSONStringer.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/JSONTokener.java"/>
-	<classpathentry kind="lib" path="lib/JSON-java-master/JSONWriter.java"/>
+	<classpathentry exported="true" kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.8"/>
+	<classpathentry exported="true" kind="lib" path="lib/mongodb-driver-3.4.3.jar"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/CDL.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/Cookie.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/CookieList.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/HTTP.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/HTTPTokener.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/JSONArray.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/JSONException.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/JSONML.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/JSONObject.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/JSONPointer.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/JSONPointerException.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/JSONString.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/JSONStringer.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/JSONTokener.java"/>
+	<classpathentry exported="true" kind="lib" path="lib/JSON-java-master/JSONWriter.java"/>
+	<classpathentry kind="lib" path="lib"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,11 +1,13 @@
 package server;
 
+import java.util.ArrayList;
 import java.util.HashSet;
 
 /**
 * Data Structure to be used when the users' information is pulled from the database
  * !!For new users, see the NewUser subclass
  * @author kireh
+ * @version 0.1
  *
  */
 class User
@@ -14,7 +16,7 @@ class User
 	private String fName; //user first name
 	private String lName; //user last name
 	private String email; //user contact email
-	private long uid; //user identification number
+	private String uid; //user identification token
 	private byte admin; //user adminLevel: 0 for student, 1 for professor, 2 for higher administrator
 
 	//tutor info, will be more variable
@@ -53,10 +55,42 @@ class User
 	 * Determines which types of changes have occured since the object was last compared to the database version
 	 * @return Necessary updates as a String[]
 	 */
-	public String getChangeType()
+	public ArrayList<String> getChangeType()
 	{
-	 return "";
+	   ArrayList<String> ans = new ArrayList<>();
+        if (newUser)
+        {
+        	ans.add("New User");
+        	return ans;
+        }
+        if (removeUser)
+        {
+            ans.add("Remove User");
+        	return ans;
+        }
+       if (userInfoChanged)
+           ans.add("User Info");
+       if (topicsChanged)
+           ans.add("Topics");
+        if(clubsChanged)
+            ans.add("Clubs");
+        if(tutorWeightChanged)
+            ans.add("Tutor Weight");
+        return ans;    
 	}
+    
+    /**
+    *Resets the detective variables so that unneccessary data is not sent to the database
+    *@return successful reset as a boolean
+    */
+    public boolean resetDetectives()
+    {
+        userInfoChanged=false;
+        topicsChanged = false;
+        clubsChanged=false;
+        tutorWeightChanged=false;
+        return (!userInfoChanged && !topicsChnged && !clubsChanged && !tutorWeightChanged) //check individually that each is reset and has not been altered
+    }
 
 	/**
 	 * Accesses a user's full name
@@ -64,7 +98,7 @@ class User
 	 */
 	public String getName()
 	{
-		return "";
+		return this.fName + " " +this.lName;
 	}
 
 	/**
@@ -73,7 +107,7 @@ class User
 	 */
 	public String getFName()
 	{
-		return "";
+		return this.fName;
 	}
 
 	/**
@@ -96,9 +130,9 @@ class User
 
 	/**
 	 * Accesses a user's ID token
-	 * @return ID as a long
+	 * @return ID as a String
 	 */
-	public long getUID()
+	public String getUID()
 	{
 		return this.uid;
 	}
@@ -199,6 +233,7 @@ class User
 			if(topics.add(x))
 			{
 				count++;
+                this.topicsChanged=true;
 				System.out.println("Added " +x +" to topic list");
 			}
 			else
@@ -218,8 +253,9 @@ class User
 	{
 		for (String x: remTopics)
 		{
+            if(topics.remove(x))
 			//remove it from the database
-			topics.remove(x);
+			
 		}
 	}
 
