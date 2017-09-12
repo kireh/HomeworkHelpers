@@ -46,7 +46,7 @@ class User
 	{
 		setFName(fn);
 		setLName(ln);
-		setEmail(email);
+		setEmail(email);	
 		setUID(uid);
 		setAdminLevel(admin);
 	}

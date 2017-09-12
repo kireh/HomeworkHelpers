@@ -36,17 +36,20 @@ A tool designed to help both students and mentors
    greater efforts.
    
 --Access Control--
-	Access will be controlled by the Canvas API, which will offer security without users needing to memorize a second password. 
+	Access will be controlled and authorized by the Canvas API oAuth2 protocol, which will offer security without users needing to memorize a second password. 
 	The HomeworkHelpers database will be stored on school servers and encrypted in accordance with FERPA. So far, only students 
 	who can still log in to Canvas are included in the users.
-	
---Security--
-	The client will be enabled with OAuth2 security measures, meaning that students' passwords are never given to our extension, 
-	server, or database.
 
 --Login Flow--
-	If the user navigates to Canvas and is not able to log in as a student, the admin login will still be available to activate 
-	the extension.
+	+Client-Server Authenticator uses version info and a public key to authenticate the software, logs and associates a unique sessionID,
+	 and passes control to the User authorization.
+	
+	+UserAuth authenticates the user with the Canvas API and logs the access token in a map structure, associating it with a userID  before passing control back
+	 to the C-SAuth.
+	
+	+C-S maps the token with a sessionID in a separate local structure for subsequent logins. When the user logs out, the associated sessionID will be set to -1. 
+	If the user attempts to log more than one active session, the second login will be denied until the first is closed, the token is deleted, or the access token 
+	expires. Once the access token expires, the token will be deleted and the initial login will rerun.
 
 --Program Architecture--
 		The Front end of this utility will be an extension which we plan to make available in Firefox initially, perhaps other 
@@ -57,33 +60,8 @@ A tool designed to help both students and mentors
 	for maintaining the data structures obtained from the database, as well as updating database records upon change (such as a 
 	new topic or new help site associated with a topic). The server will receive JSONRequests from the clients and return 
 	JSONResponses.
-	The database will store the topics, available help sources, and feed those data to the server.  
-
---People to Contact--
-	+Approval from the Learning Center (Washington)
-	+Approval from the Cyber Battle Lab
-	+Robotics Club
-	+Institute of Electrical and Electronics Engineers
-	+Rocketry Club
-	+Society of Women Engineers
-	+NSBE
-	+STEMM
-
---Question Section--
-	-Would an admin be able to remove mentors/topics?
-		Suggested answer: Admin would be able to see new topics as they are added and can receive warnings of topics that 
-		are too closely related, duplicate, etc.
-
-	-How would the admin gain access without canvas? Admin responsibility has to be easy to pass around and/or distribute.
-		Suggested answer: See if the registrar can add them to the class for these circumstances.
-	-Define the Granularity of Supported Topics: Will we be working with Full courses? If not, how to break up topics?
-
-	-Potentially allow users to suggest topics? (manual or automatic)
-
-	-Research FERPA and other legal requirements
-
-	-Who can see what Canvas pages?
-
+		The database will store the topics, available help sources, and feed those data to the server.
+		
 --Project Breakdown--
 -Web Face Team handles:
 	-UI Mockup (Perhaps we should allow users to self-rate their experience/availability on a sliding scale)
@@ -99,9 +77,34 @@ A tool designed to help both students and mentors
 -Server
 	-The Server Functionality 
 	-The Server GUI
-	+Look up MongoDB, how it works with Java
+	+Look up MongoDB, how it works with Java (alternatively Node.js)
 	+Lookup the JavaSecurity Class
 -Database
 	-MongoDB (JS shell, JSON)
-	-Entity Relation Diagram
-	+Look up MongoDB and available Security measures for it
+	-DataMap Diagram
+	+Look up MongoDB and available Security measures for it  
+
+--People to Contact--
+	+Approval from Distance Learning
+	+Approval from the Cyber Battle Lab
+	+Robotics Club
+	+Institute of Electrical and Electronics Engineers
+	+Rocketry Club
+	+Society of Women Engineers
+	+NSBE
+	+STEMM
+
+--Question Section--
+	-Would an admin be able to remove mentors/topics?
+		Suggested answer: Admin would be able to see new topics as they are added and can receive warnings of topics that 
+		are too closely related, duplicate, etc.
+
+	-How would the admin gain access without canvas? Admin responsibility has to be easy to pass around and/or distribute.
+		Suggested answer: See if Distance Learning can add them to the class for these circumstances.
+		
+	-Define the Granularity of Supported Topics: Will we be working with Full courses? If not, how to break up topics?
+		Related: Potentially allow users to suggest topics? (manual or automatic)
+
+	-Research FERPA and other legal requirements
+
+	-Who can see what Canvas pages?
